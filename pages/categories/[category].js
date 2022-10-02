@@ -1,7 +1,6 @@
-import Link from 'next/link';
 import React, { useEffect, useState, useContext } from 'react'
 const baseEndpoint = "https://api.publicapis.org";
-import { AppConfig } from '../context/AppConfig'
+import { AppConfig } from '../AppConfig'
 
 export async function getStaticPaths() {
     const res = await fetch(baseEndpoint + "/entries");
@@ -39,7 +38,7 @@ export async function getStaticProps({ params }) {
 
 
 
-export default function Index({ data, categories }) {
+function Index({ data, categories }) {
     const { toggle, toggleModes } = useContext(AppConfig)
     const [array, setArray] = useState([])
     const [cats, setCats] = useState([])
@@ -54,9 +53,7 @@ export default function Index({ data, categories }) {
         <>
             <div className={`navbar flex ${toggle === true ? "bg-gray-900" : "bg-green-300"} p-8 items-center rounded-b-2xl m-4 rounded-t-xl gap-10 shadow-blue-200 drop-shadow-sm`}>
                 <div className='flex gap-10'>
-                    <Link href="/">
-                        <button className={`p-2 bg-blue-200 rounded-xl shadow-sm ${toggle === true ? "drop-shadow-sm shadow-white text-gray-800" : "drop-shadow-sm shadow-black text-black"} hover:rounded-2xl hover:bg-blue-300 transition-all ease-in-out`}>Home</button>
-                    </Link>
+                    <button className={`p-2 bg-blue-200 rounded-xl shadow-sm ${toggle === true ? "drop-shadow-sm shadow-white text-gray-800" : "drop-shadow-sm shadow-black text-black"} hover:rounded-2xl hover:bg-blue-300 transition-all ease-in-out`}><a href="/">Home</a></button>
 
                     <div className="relative inline-block text-left">
                         <div>
@@ -73,9 +70,8 @@ export default function Index({ data, categories }) {
                             <div className="py-1 rounded-2xl" role="none">
                                 {/* <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" --> */}
                                 {cats.map((cat, key) => (
-                                    <Link key={key} href={`/categories/${cat.toLowerCase()}`}>
-                                        <a className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">{cat}</a>
-                                    </Link>
+
+                                    <a key={key} href={`/categories/${cat.toLowerCase()}`} className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">{cat}</a>
 
                                 ))}
                             </div>
@@ -147,3 +143,4 @@ export default function Index({ data, categories }) {
 
 
 
+export default Index

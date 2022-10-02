@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { useEffect, useState, useContext } from 'react'
-import { AppConfig } from './context/AppConfig'
+import { AppConfig } from './AppConfig'
 
 
 const baseEndpoint = "https://api.publicapis.org";
@@ -18,7 +18,7 @@ export async function getStaticProps() {
 
 
 
-export default function Index({ data, categories }) {
+function Index({ data, categories }) {
   const { toggle, toggleModes } = useContext(AppConfig)
   const [array, setArray] = useState([])
   const [cats, setCats] = useState([])
@@ -126,3 +126,4 @@ export default function Index({ data, categories }) {
 
 
 
+export default Index
