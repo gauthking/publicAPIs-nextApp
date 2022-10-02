@@ -2,7 +2,7 @@ import React, { useState, createContext, useEffect } from 'react';
 export const AppConfig = createContext();
 
 
-export const AppProvider = ({ children }) => {
+export default AppProvider = ({ children }) => {
     const [toggle, setToggle] = useState(false);
 
     const toggleModes = () => {
