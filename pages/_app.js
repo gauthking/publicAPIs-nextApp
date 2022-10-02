@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import { AppProvider } from './AppConfig';
+import { AppProvider } from './context/AppConfig';
 
 function MyApp({ Component, pageProps }) {
   return (

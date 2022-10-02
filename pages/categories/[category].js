@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React, { useEffect, useState, useContext } from 'react'
 const baseEndpoint = "https://api.publicapis.org";
-import { AppConfig } from '../AppConfig'
+import { AppConfig } from '../context/AppConfig'
 
 export async function getStaticPaths() {
     const res = await fetch(baseEndpoint + "/entries");
