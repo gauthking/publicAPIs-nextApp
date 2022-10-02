@@ -18,7 +18,7 @@ export async function getStaticProps() {
 
 
 
-function Index({ data, categories }) {
+export default function Index({ data, categories }) {
   const { toggle, toggleModes } = useContext(AppConfig)
   const [array, setArray] = useState([])
   const [cats, setCats] = useState([])
@@ -126,4 +126,3 @@ function Index({ data, categories }) {
 
 
 
-export default Index

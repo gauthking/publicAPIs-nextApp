@@ -32,7 +32,7 @@ export async function getStaticProps({ params }) {
 }
 
 
-function Index({ data }) {
+export default function Index({ data }) {
     const [array, setArray] = useState([])
     useEffect(() => {
         setArray(data.entries);
@@ -63,5 +63,3 @@ function Index({ data }) {
 
     )
 }
-
-export default Index
