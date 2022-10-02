@@ -54,7 +54,9 @@ function Index({ data, categories }) {
         <>
             <div className={`navbar flex ${toggle === true ? "bg-gray-900" : "bg-green-300"} p-8 items-center rounded-b-2xl m-4 rounded-t-xl gap-10 shadow-blue-200 drop-shadow-sm`}>
                 <div className='flex gap-10'>
-                    <button className={`p-2 bg-blue-200 rounded-xl shadow-sm ${toggle === true ? "drop-shadow-sm shadow-white text-gray-800" : "drop-shadow-sm shadow-black text-black"} hover:rounded-2xl hover:bg-blue-300 transition-all ease-in-out`}><a href="/">Home</a></button>
+                    <Link href="/">
+                        <button className={`p-2 bg-blue-200 rounded-xl shadow-sm ${toggle === true ? "drop-shadow-sm shadow-white text-gray-800" : "drop-shadow-sm shadow-black text-black"} hover:rounded-2xl hover:bg-blue-300 transition-all ease-in-out`}>Home</button>
+                    </Link>
 
                     <div className="relative inline-block text-left">
                         <div>
