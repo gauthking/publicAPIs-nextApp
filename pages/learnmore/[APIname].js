@@ -32,17 +32,17 @@ export async function getStaticProps({ params }) {
 }
 
 
-function index({ data }) {
+function Index({ data }) {
     const [array, setArray] = useState([])
     useEffect(() => {
         setArray(data.entries);
-    }, [])
+    }, [data.entries])
     console.log(array[0])
     return (
         <div className='flex flex-col'>
             <div className='main m-4 flex flex-col flex-wrap justify-center items-center bg-blue-100 rounded-lg py-10 px-2'>
-                {array.map((val) => (
-                    <div className='m-auto flex flex-col gap-10 mb-20'>
+                {array.map((val, key) => (
+                    <div key={key} className='m-auto flex flex-col gap-10 mb-20'>
                         <p className='font-bold flex'>API Name: <p className='font-light ml-2'>{val.API}</p></p>
                         <p className='font-bold flex'>API Description: <p className='font-light ml-2'>{val.Description}</p></p>
                         <p className='font-bold flex'>Category: <p className='font-light ml-2'>{val.Category}</p></p>
@@ -64,4 +64,4 @@ function index({ data }) {
     )
 }
 
-export default index
+export default Index

@@ -38,7 +38,7 @@ export async function getStaticProps({ params }) {
 
 
 
-function index({ data, categories }) {
+function Index({ data, categories }) {
     const { toggle, toggleModes } = useContext(AppConfig)
     const [array, setArray] = useState([])
     const [cats, setCats] = useState([])
@@ -48,7 +48,7 @@ function index({ data, categories }) {
     useEffect(() => {
         setArray(data.entries)
         setCats(categories.categories)
-    }, [])
+    }, [categories.categories, data, entries])
     return (
         <>
             <div className={`navbar flex ${toggle === true ? "bg-gray-900" : "bg-green-300"} p-8 items-center rounded-b-2xl m-4 rounded-t-xl gap-10 shadow-blue-200 drop-shadow-sm`}>
@@ -69,9 +69,9 @@ function index({ data, categories }) {
                         <div className={dropdown === true ? `h-52 overflow-y-scroll absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  ` : `h-52 overflow-y-scroll hidden absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5`} role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                             <div className="py-1 rounded-2xl" role="none">
                                 {/* <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" --> */}
-                                {cats.map((cat) => (
+                                {cats.map((cat, key) => (
 
-                                    <a href={`/categories/${cat.toLowerCase()}`} className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">{cat}</a>
+                                    <a key={key} href={`/categories/${cat.toLowerCase()}`} className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">{cat}</a>
 
                                 ))}
                             </div>
@@ -143,4 +143,4 @@ function index({ data, categories }) {
 
 
 
-export default index
+export default Index
