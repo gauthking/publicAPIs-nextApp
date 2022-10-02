@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useEffect, useState, useContext } from 'react'
 const baseEndpoint = "https://api.publicapis.org";
 import { AppConfig } from '../AppConfig'
@@ -48,7 +49,7 @@ function Index({ data, categories }) {
     useEffect(() => {
         setArray(data.entries)
         setCats(categories.categories)
-    }, [categories.categories, data, entries])
+    }, [categories.categories, data.entries])
     return (
         <>
             <div className={`navbar flex ${toggle === true ? "bg-gray-900" : "bg-green-300"} p-8 items-center rounded-b-2xl m-4 rounded-t-xl gap-10 shadow-blue-200 drop-shadow-sm`}>
@@ -70,8 +71,9 @@ function Index({ data, categories }) {
                             <div className="py-1 rounded-2xl" role="none">
                                 {/* <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" --> */}
                                 {cats.map((cat, key) => (
-
-                                    <a key={key} href={`/categories/${cat.toLowerCase()}`} className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">{cat}</a>
+                                    <Link key={key} href={`/categories/${cat.toLowerCase()}`}>
+                                        <a className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">{cat}</a>
+                                    </Link>
 
                                 ))}
                             </div>
